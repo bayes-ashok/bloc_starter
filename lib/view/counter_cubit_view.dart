@@ -1,3 +1,4 @@
+// import 'package:bloc_test/bloc/arithmetic_bloc.dart';
 import 'package:bloc_test/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -53,7 +54,9 @@ class CounterCubitView extends StatelessWidget {
             child: const Icon(Icons.remove),
           ),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<CounterCubit>().reset();
+            },
             tooltip: 'Reset',
             child: const Icon(Icons.reset_tv),
           ),

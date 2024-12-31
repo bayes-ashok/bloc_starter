@@ -1,4 +1,5 @@
-import 'package:bloc_test/cubit/counter_cubit.dart';
+import 'package:bloc_test/bloc/arithmetic_bloc.dart';
+// import 'package:bloc_test/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -58,7 +59,7 @@ class ArithmeticBlocView extends StatelessWidget {
               const SizedBox(
                 height: 8,
               ),
-              BlocBuilder<CounterCubit, int>(
+              BlocBuilder<ArithmeticBloc, int>(
                 builder: (context, state) {
                   return Text(
                     'Result: $state',
@@ -75,9 +76,12 @@ class ArithmeticBlocView extends StatelessWidget {
                   onPressed: () {
                     first = int.parse(firstController.text);
                     second = int.parse(secondController.text);
-                    context.read<CounterCubit>().add(first, second);
+                    // context.read<CounterCubit>().add(first, second);
+                    context
+                        .read<ArithmeticBloc>()
+                        .add(IncrementEvent(first, second));
                   },
-                  child: const Text('Addition'),
+                  child: const Text('Addition + 1'),
                 ),
               ),
               const SizedBox(
@@ -89,7 +93,9 @@ class ArithmeticBlocView extends StatelessWidget {
                   onPressed: () {
                     first = int.parse(firstController.text);
                     second = int.parse(secondController.text);
-                    context.read<CounterCubit>().sub(first, second);
+                    context
+                        .read<ArithmeticBloc>()
+                        .add(DecrementEvent(first, second));
                   },
                   child: const Text('Subtraction'),
                 ),
@@ -98,9 +104,9 @@ class ArithmeticBlocView extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    first = int.parse(firstController.text);
-                    second = int.parse(secondController.text);
-                    context.read<CounterCubit>().mul(first, second);
+                    // first = int.parse(firstController.text);
+                    // second = int.parse(secondController.text);
+                    // context.read<CounterCubit>().mul(first, second);
                   },
                   child: const Text('Multiply'),
                 ),

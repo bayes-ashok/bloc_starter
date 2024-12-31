@@ -43,7 +43,7 @@ class DashboardView extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
                   Icon(Icons.calculate, size: 48),
-                  Text('Arithmetic Cubit'),
+                  Text('Arithmetic Bloc'),
                 ],
               ),
             ),
@@ -93,26 +93,12 @@ class DashboardView extends StatelessWidget {
           Card(
             child: InkWell(
               onTap: () {
-                context.read<DashboardCubit>().openBMIView(context);
+                context.read<DashboardCubit>().openCounterBlocView(context);
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
-                  Icon(Icons.boy_rounded, size: 48),
-                  Text('BMI calculator'),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: InkWell(
-              onTap: () {
-                context.read<DashboardCubit>().openCounterView(context);
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  Icon(Icons.boy_rounded, size: 48),
+                  Icon(Icons.plus_one, size: 48),
                   Text('Counter Bloc'),
                 ],
               ),
@@ -121,26 +107,12 @@ class DashboardView extends StatelessWidget {
           Card(
             child: InkWell(
               onTap: () {
-                context.read<DashboardCubit>().openStudentView(context);
+                context.read<DashboardCubit>().openArithmeticBlocView(context);
               },
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const <Widget>[
-                  Icon(Icons.boy_rounded, size: 48),
-                  Text('Student Bloc'),
-                ],
-              ),
-            ),
-          ),
-          Card(
-            child: InkWell(
-              onTap: () {
-                context.read<DashboardCubit>().openArithmeticView(context);
-              },
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: const <Widget>[
-                  Icon(Icons.boy_rounded, size: 48),
+                  Icon(Icons.calculate_outlined, size: 48),
                   Text('Arithmetic Bloc'),
                 ],
               ),

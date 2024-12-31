@@ -1,4 +1,5 @@
-import 'package:bloc_test/cubit/counter_cubit.dart';
+import 'package:bloc_test/bloc/counter_bloc.dart';
+// import 'package:bloc_test/cubit/counter_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,7 +24,7 @@ class CounterBlocView extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 8),
-            BlocBuilder<CounterCubit, int>(
+            BlocBuilder<CounterBloc, int>(
               builder: (context, state) {
                 return Text(
                   '$state',
@@ -40,20 +41,24 @@ class CounterBlocView extends StatelessWidget {
         children: <Widget>[
           FloatingActionButton(
             onPressed: () {
-              context.read<CounterCubit>().increment();
+              // context.read<CounterCubit>().increment();
+              context.read<CounterBloc>().add(IncrementEvent());
             },
             tooltip: 'Increment',
             child: const Icon(Icons.add),
           ),
           FloatingActionButton(
             onPressed: () {
-              context.read<CounterCubit>().decrement();
+              // context.read<CounterCubit>().decrement();
+              context.read<CounterBloc>().add(DecrementEvent());
             },
             tooltip: 'Decrement',
             child: const Icon(Icons.remove),
           ),
           FloatingActionButton(
-            onPressed: () {},
+            onPressed: () {
+              context.read<CounterBloc>().add(ResetEvent());
+            },
             tooltip: 'Reset',
             child: const Icon(Icons.reset_tv),
           ),
