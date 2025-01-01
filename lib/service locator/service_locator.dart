@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc/arithmetic_bloc.dart';
 import 'package:bloc_test/bloc/counter_bloc.dart';
+import 'package:bloc_test/bloc/student_bloc.dart';
 import 'package:bloc_test/cubit/area_cubit.dart';
 import 'package:bloc_test/cubit/arithmetic_cubit.dart';
 import 'package:bloc_test/cubit/bmi_cubit.dart';
@@ -25,9 +26,11 @@ void _initCubit() {
   serviceLocator.registerLazySingleton<BmiCubit>(() => BmiCubit());
   serviceLocator.registerLazySingleton<CounterBloc>(() => CounterBloc());
   serviceLocator.registerLazySingleton<ArithmeticBloc>(() => ArithmeticBloc());
+  serviceLocator.registerLazySingleton<StudentBloc>(() => StudentBloc());
 
   serviceLocator.registerLazySingleton<DashboardCubit>(
     () => DashboardCubit(
+      serviceLocator(),
       serviceLocator(),
       serviceLocator(),
       serviceLocator(),

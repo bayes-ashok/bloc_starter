@@ -118,6 +118,20 @@ class DashboardView extends StatelessWidget {
               ),
             ),
           ),
+          Card(
+            child: InkWell(
+              onTap: () {
+                context.read<DashboardCubit>().openStudentBlocView(context);
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: const <Widget>[
+                  Icon(Icons.people_alt_rounded, size: 48),
+                  Text('Student Bloc'),
+                ],
+              ),
+            ),
+          ),
         ],
       ),
     );

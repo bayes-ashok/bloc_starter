@@ -1,5 +1,6 @@
 import 'package:bloc_test/bloc/arithmetic_bloc.dart';
 import 'package:bloc_test/bloc/counter_bloc.dart';
+import 'package:bloc_test/bloc/student_bloc.dart';
 import 'package:bloc_test/cubit/area_cubit.dart';
 import 'package:bloc_test/cubit/arithmetic_cubit.dart';
 import 'package:bloc_test/cubit/bmi_cubit.dart';
@@ -14,6 +15,7 @@ import 'package:bloc_test/view/bmi_view.dart';
 import 'package:bloc_test/view/counter_bloc_view.dart';
 import 'package:bloc_test/view/counter_cubit_view.dart';
 import 'package:bloc_test/view/simple_interest.dart';
+import 'package:bloc_test/view/student_bloc_view.dart';
 // import 'package:bloc_test/view/student_bloc_view.dart';
 import 'package:bloc_test/view/student_cubit_view.dart';
 // import 'package:bloc_test/view/student_bloc_view.dart';
@@ -30,6 +32,7 @@ class DashboardCubit extends Cubit<void> {
     this._bmiCubit,
     this._arithmeticBloc,
     this._counterBloc,
+    this._studentBloc,
   ) : super(null);
 
   final CounterCubit _counterCubit;
@@ -40,6 +43,7 @@ class DashboardCubit extends Cubit<void> {
   final BmiCubit _bmiCubit;
   final CounterBloc _counterBloc;
   final ArithmeticBloc _arithmeticBloc;
+  final StudentBloc _studentBloc;
 
   void openCounterView(BuildContext context) {
     Navigator.push(
@@ -125,6 +129,17 @@ class DashboardCubit extends Cubit<void> {
           builder: (_) => BlocProvider.value(
                 value: _arithmeticBloc,
                 child: ArithmeticBlocView(),
+              )),
+    );
+  }
+
+  void openStudentBlocView(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (_) => BlocProvider.value(
+                value: _studentBloc,
+                child: StudentBlocView(),
               )),
     );
   }
