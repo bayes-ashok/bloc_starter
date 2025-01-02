@@ -1,6 +1,5 @@
-import 'package:bloc_test/cubit/student_cubit.dart';
+import 'package:bloc_test/bloc/students_bloc.dart';
 import 'package:bloc_test/model/student_model.dart';
-import 'package:bloc_test/state/student_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -17,7 +16,7 @@ class StudentBlocView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Student Cubit'),
+        title: const Text('Student Bloc'),
         centerTitle: true,
       ),
       body: Padding(
@@ -78,7 +77,8 @@ class StudentBlocView extends StatelessWidget {
                       age: int.parse(_ageController.text),
                       address: _addressController.text,
                     );
-                    context.read<StudentCubit>().addStudent(student);
+                    // context.read<StudentCubit>().addStudent(student);
+                    context.read<StudentsBloc>().add(AddStudentEvent(student));
                     _nameController.clear();
                     _ageController.clear();
                     _addressController.clear();
@@ -87,25 +87,26 @@ class StudentBlocView extends StatelessWidget {
                 child: const Text('Submit'),
               ),
               SizedBox(height: 8),
-              BlocBuilder<StudentCubit, StudentState>(
+              BlocBuilder<StudentsBloc, StudentsState>(
                 builder: (context, state) {
-                  if (state.isLoading) {
+                  if (state.loading) {
                     return const CircularProgressIndicator();
-                  } else if (state.lstStudents.isEmpty) {
+                  } else if (state.students.isEmpty) {
                     return const Text('No students added yet');
                   } else {
                     return ListView.builder(
                       shrinkWrap: true,
-                      itemCount: state.lstStudents.length,
+                      itemCount: state.students.length,
                       itemBuilder: (context, index) {
                         return ListTile(
-                          title: Text(state.lstStudents[index].name),
-                          subtitle:
-                              Text(state.lstStudents[index].age.toString()),
+                          title: Text(state.students[index].name),
+                          subtitle: Text(state.students[index].age.toString()),
                           trailing: IconButton(
                             icon: const Icon(Icons.delete),
                             onPressed: () {
-                              context.read<StudentCubit>().deleteStudent(index);
+                              context
+                                  .read<StudentsBloc>()
+                                  .add(DeleteStudent(index));
                             },
                           ),
                         );

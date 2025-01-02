@@ -1,6 +1,6 @@
 import 'package:bloc_test/bloc/arithmetic_bloc.dart';
 import 'package:bloc_test/bloc/counter_bloc.dart';
-import 'package:bloc_test/bloc/student_bloc.dart';
+import 'package:bloc_test/bloc/students_bloc.dart';
 import 'package:bloc_test/cubit/area_cubit.dart';
 import 'package:bloc_test/cubit/arithmetic_cubit.dart';
 import 'package:bloc_test/cubit/bmi_cubit.dart';
@@ -43,7 +43,7 @@ class DashboardCubit extends Cubit<void> {
   final BmiCubit _bmiCubit;
   final CounterBloc _counterBloc;
   final ArithmeticBloc _arithmeticBloc;
-  final StudentBloc _studentBloc;
+  final StudentsBloc _studentBloc;
 
   void openCounterView(BuildContext context) {
     Navigator.push(
